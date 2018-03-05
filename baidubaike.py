@@ -14,8 +14,9 @@ for i in range(20):
     print(i,soup.find('h1').get_text(),' url',his[-1])#h1是主标题
 
     # find valid urls
-    sub_urls = soup.find_all("a", {"target": "_blank", "href": re.compile("/item/(%.{2})+$")})
-
+   #下面的语句有两种方法
+   #sub_urls = soup.find_all("a",{ "target":"_blank", "href": re.compile("/item/(%.{2})+$")})
+    sub_urls = soup.find_all("a",target="_blank", href=re.compile("/item/(%.{2})+$"))
     if len(sub_urls)!=0:
         his.append(random.sample(sub_urls,1)[0]['href'])
         
